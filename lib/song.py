@@ -11,11 +11,11 @@ class Song:
         self.name = name
         self.artist = artist
         self.genre = genre
-        self.add_to_artists(self.artist)
-        self.add_song_to_count()
-        self.add_to_genres(self.genre)
-        self.add_to_genre_count(self.genre)
-        self.add_to_artist_count(self.artist)
+        Song.add_to_artists(self.artist)
+        Song.add_song_to_count()
+        Song.add_to_genres(self.genre)
+        Song.add_to_genre_count(self.genre)
+        Song.add_to_artist_count(self.artist)
        
    
     @classmethod
@@ -31,10 +31,11 @@ class Song:
     
     @classmethod
     def add_to_genres(cls, genre):
-        cls.genres.append(genre)  # Always add the genre
+        if genre not in cls.genres:
+            cls.genres.append(genre)  # Always add the genre
         
-        # Remove duplicates by converting to a set and back to a list
-        cls.genres = list(set(cls.genres))
+        # # Remove duplicates by converting to a set and back to a list
+        # cls.genres = list(set(cls.genres))
         
     
     @classmethod
